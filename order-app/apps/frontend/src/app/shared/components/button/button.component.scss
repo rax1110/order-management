@@ -1,0 +1,66 @@
+@use '../../../../styles.scss' as *;
+
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-sm) var(--spacing-base);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: var(--font-size-sm);
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  min-height: 36px;
+
+  &:disabled, &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    
+    &:hover:not(:disabled):not(.disabled) {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--color-gray-100);
+    color: var(--color-text-primary);
+    
+    &:hover:not(:disabled):not(.disabled) {
+      background-color: var(--color-gray-200);
+    }
+  }
+
+  &--link {
+    background: none;
+    color: var(--color-text-secondary);
+    border: none;
+    padding: 0;
+    font-size: var(--font-size-sm);
+    min-height: auto;
+    
+    &:hover:not(:disabled):not(.disabled) {
+      color: var(--color-primary);
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+
+    @include respond-to('md') {
+      width: auto;
+    }
+  }
+
+  &--loading {
+    cursor: wait;
+  }
+} 

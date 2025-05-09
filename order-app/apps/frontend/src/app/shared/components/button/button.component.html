@@ -1,0 +1,24 @@
+@if (routerLink) {
+  <a
+    [routerLink]="routerLink"
+    [ngClass]="classes"
+    [class.disabled]="disabled || loading">
+    <span class="button-content">
+      <app-loading-spinner *ngIf="loading" [inline]="true" [size]="16"></app-loading-spinner>
+      {{ text }}
+    </span>
+  </a>
+}
+
+@if (!routerLink) {
+  <button 
+    [type]="type"
+    [ngClass]="classes"
+    [disabled]="disabled || loading"
+    (click)="onClick($event)">
+    <span class="button-content">
+      <app-loading-spinner *ngIf="loading" [inline]="true" [size]="16"></app-loading-spinner>
+      <ng-content></ng-content>
+    </span>
+  </button>
+}

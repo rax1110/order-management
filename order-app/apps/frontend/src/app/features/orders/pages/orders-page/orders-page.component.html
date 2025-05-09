@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="header-section">
+    <h1>Orders</h1>
+    <app-button routerLink="/orders/new" variant="primary" text="Create order"></app-button>
+  </div>
+  
+  <app-order-list
+    [orders]="orders$ | async"
+    [loading]="loading$ | async"
+    [filters]="filters"
+    (filterChange)="updateFilter($event.field, $event.value)"
+    (clearFilters)="clearFilters()">
+  </app-order-list>
+</div> 

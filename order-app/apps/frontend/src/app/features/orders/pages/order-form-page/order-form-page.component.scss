@@ -1,0 +1,10 @@
+.back-link {
+  color: var(--color-text-secondary);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  
+  &:hover {
+    color: var(--color-primary);
+  }
+}

@@ -1,0 +1,33 @@
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.primary-badge {
+  background-color: #e0e7ff;
+  color: var(--color-primary);
+}
+
+.normal-badge {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.success-badge {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.pending-badge {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.warning-badge {
+  background-color: #fee2e2;
+  color: #b91c1c;
+} 

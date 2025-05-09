@@ -1,0 +1,78 @@
+<div class="filters-row">
+  <div class="search-container">
+    <input
+      type="text"
+      [ngModel]="filters.description"
+      (ngModelChange)="updateFilter('description', $event)"
+      class="search-input"
+      placeholder="Search by description..."
+    />
+  </div>
+
+  <div class="country-filter">
+    <select 
+      [ngModel]="filters.countryCode" 
+      (ngModelChange)="updateFilter('countryCode', $event)"
+      class="country-select"
+    >
+      <option value="">All Countries</option>
+      <option *ngFor="let country of countries$ | async" [value]="country.code">
+        {{ country.name }}
+      </option>
+    </select>
+    <button (click)="onClearFilters()" class="reset-button">Reset Filters</button>
+  </div>
+</div>
+
+<app-loading-spinner 
+  *ngIf="loading" 
+  message="Loading orders..."
+></app-loading-spinner>
+
+<div *ngIf="!loading && !orders?.length" class="no-results">
+  <i class="icon large">📭</i>
+  <p>No orders found matching your criteria.</p>
+</div>
+
+<div *ngIf="!loading && orders?.length" class="table-container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Order Number</th>
+        <th>Description</th>
+        <th>Country</th>
+        <th>Town</th>
+        <th>Amount</th>
+        <th>Due Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders" class="table-row">
+        <td>
+          <div class="order-number">
+            {{ order.orderNumber }}
+          </div>
+        </td>
+        <td>{{ order.paymentDescription }}</td>
+        <td>
+          <app-status-badge 
+            [type]="order.countryCode | countryBadgeType"
+            [text]="order.countryCode | countryName:(countries$ | async)"
+          ></app-status-badge>
+        </td>
+        <td>{{ order.town }}</td>
+        <td>
+          <span class="amount">{{ order.amount | currency:order.currencyCode }}</span>
+        </td>
+        <td>{{ order.paymentDueDate | date:'MMM d, yyyy' }}</td>
+        <td>
+          <app-status-badge 
+            [type]="order | paymentStatus | statusBadgeType"
+            [text]="order | paymentStatus"
+          ></app-status-badge>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> 

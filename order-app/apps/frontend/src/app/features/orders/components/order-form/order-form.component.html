@@ -1,0 +1,150 @@
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<div class="form-container">
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="orderNumber">Order number</label>
+        <input
+          type="text"
+          id="orderNumber"
+          formControlName="orderNumber"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['orderNumber'].errors}"
+        />
+        <div *ngIf="submitted && formControls['orderNumber'].errors" class="error-text">
+          <div *ngIf="formControls['orderNumber'].errors['required']">Order number is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="paymentDescription">Payment description</label>
+        <input
+          type="text"
+          id="paymentDescription"
+          formControlName="paymentDescription"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['paymentDescription'].errors}"
+        />
+        <div *ngIf="submitted && formControls['paymentDescription'].errors" class="error-text">
+          <div *ngIf="formControls['paymentDescription'].errors['required']">Payment description is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="streetAddress">Street address</label>
+        <input
+          type="text"
+          id="streetAddress"
+          formControlName="streetAddress"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['streetAddress'].errors}"
+        />
+        <div *ngIf="submitted && formControls['streetAddress'].errors" class="error-text">
+          <div *ngIf="formControls['streetAddress'].errors['required']">Street address is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="town">Town</label>
+        <input
+          type="text"
+          id="town"
+          formControlName="town"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['town'].errors}"
+        />
+        <div *ngIf="submitted && formControls['town'].errors" class="error-text">
+          <div *ngIf="formControls['town'].errors['required']">Town is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select
+          id="country"
+          formControlName="countryCode"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['countryCode'].errors}"
+        >
+          <option value="">Select country</option>
+          <option *ngFor="let country of countries$ | async" [value]="country.code">
+            {{ country.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && formControls['countryCode'].errors" class="error-text">
+          <div *ngIf="formControls['countryCode'].errors['required']">Country is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          id="amount"
+          formControlName="amount"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['amount'].errors}"
+          step="0.01"
+        />
+        <div *ngIf="submitted && formControls['amount'].errors" class="error-text">
+          <div *ngIf="formControls['amount'].errors['required']">Amount is required</div>
+          <div *ngIf="formControls['amount'].errors['min']">Amount must be greater than 0</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="currency">Currency</label>
+        <select
+          id="currency"
+          formControlName="currencyCode"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['currencyCode'].errors}"
+        >
+          <option value="">Select currency</option>
+          <option *ngFor="let currency of currencies$ | async" [value]="currency.code">
+            {{ currency.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && formControls['currencyCode'].errors" class="error-text">
+          <div *ngIf="formControls['currencyCode'].errors['required']">Currency is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="paymentDueDate">Payment due date</label>
+        <input
+          type="date"
+          id="paymentDueDate"
+          formControlName="paymentDueDate"
+          class="form-control"
+          [ngClass]="{'error-border': submitted && formControls['paymentDueDate'].errors}"
+          [value]="orderForm.get('paymentDueDate')?.value | date:'yyyy-MM-dd'"
+        />
+        <div *ngIf="submitted && formControls['paymentDueDate'].errors" class="error-text">
+          <div *ngIf="formControls['paymentDueDate'].errors['required']">Payment due date is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <app-button 
+        variant="secondary"
+        type="button"
+        (buttonClick)="onCancel()"
+      >
+        Cancel
+      </app-button>
+
+      <app-button 
+        variant="primary"
+        type="submit"
+        [loading]="loading"
+      >
+        Create order
+      </app-button>
+    </div>
+  </form>
+</div> 

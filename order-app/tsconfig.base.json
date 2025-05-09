@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false, // Was necessary addition to solve Angular setup issue https://github.com/nrwl/nx/issues/29940
+    // "declarationMap": true, // Necessary to comment out to support NestJS tsconfig setup with declaration: false
+    // "emitDeclarationOnly": true, // Necessary to comment out to support NestJS tsconfig setup declaration: false
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": ["es2022", "dom"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2022",
+    "customConditions": ["development"]
+  }
+}
