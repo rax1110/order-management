@@ -16,7 +16,7 @@ The application allows you to create and view orders with filtering capabilities
 
 ### Development Notes
 
-For simplicity in this technical assessment, configuration is hardcoded without `.env` files. In a production environment, proper environment variables would be implemented following security best practices, with different configurations for development, staging, and production environments.
+For simplicity in this technical assessment, configuration is hardcoded without `.env` files. In a production environment, proper environment variables would be implemented following security best practices, with different configurations for development, staging, and production environments. Also database modeling is simplified and not normalized, ideally the Order entity could be split into Address, Payment (depending on business needs).
 
 ## Documentation
 
@@ -116,7 +116,8 @@ The application includes several features to make it production-ready:
 ## Areas for Improvement
 
 - Authentication and authorization
-- Implement pagination for orders list
+- Pagination support for lists
+- Normalization of data
 - CI/CD pipeline setup
 - Comprehensive test coverage
 - Performance optimizations for large datasets
