@@ -13,6 +13,8 @@ NestJS-based backend application for the Order Management System.
 
 ## API Endpoints
 
+Full documentation: http://127.0.0.1:3000/docs
+
 ### Orders
 
 - `GET /orders` - Get all orders with optional filtering
