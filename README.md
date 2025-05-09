@@ -128,9 +128,8 @@ The application includes several features to make it production-ready:
 - Preserve form state with clear functionality
 - Google Places API integration for address lookup and form prefill
 - Currency exchange API integration
-- Mobile responsive design improvements
 - Translations and internationalization (i18n)
-- Reusable UI component library with custom buttons
+- Reusable UI component library
 - Proper linter configuration setup
-- CI/CD pipeline for migrations, tests, with precommit hooks for lint and branch checks
-- Open API codegen for type safety
+- CI/CD pipeline for migrations, tests, deployment, with precommit hooks for lint and branch checks
+- Open API codegen for types
