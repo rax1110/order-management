@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component.js';
 
-export type ButtonVariant = 'primary' | 'secondary';
+export type ButtonVariant = 'primary' | 'secondary' | 'link';
 export type ButtonType = 'button' | 'submit';
 
 @Component({

@@ -20,8 +20,8 @@ For simplicity in this technical assessment, configuration is hardcoded without 
 
 ## Documentation
 
-- [Frontend Documentation](./order-app/apps/frontend/README.md)
-- [Backend Documentation](./order-app/apps/backend/README.md)
+- [Frontend Documentation](./apps/frontend/README.md)
+- [Backend Documentation](./apps/backend/README.md)
 
 ## Quick Setup
 
@@ -31,23 +31,11 @@ For simplicity in this technical assessment, configuration is hardcoded without 
 - npm or yarn
 - Docker and Docker Compose (for database)
 
-### Setup with Docker Compose
-
-The simplest way to start the database:
-
-```bash
-# Navigate to the main project directory
-cd order-app
-
-# Start PostgreSQL database with Docker
-docker-compose up -d
-```
-
 ### Complete Application Setup
 
 ```bash
-# Navigate to the project directory
-cd order-app
+# Start PostgreSQL database with Docker
+docker-compose up -d
 
 # Install dependencies
 npm install
@@ -57,6 +45,9 @@ npm run migration:generate
 
 # Run database migrations
 npm run migration:run
+
+# Start all applications together
+npm run start
 
 # Start backend development server
 npm run start:backend
@@ -74,7 +65,6 @@ You can create a shell script to boot everything together:
 ```bash
 # Create a file named start-app.sh
 echo '#!/bin/bash
-cd order-app
 docker-compose up -d
 npm install
 npm run migration:run
