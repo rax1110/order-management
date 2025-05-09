@@ -1,11 +1,11 @@
-# Order management
-
-## Project Overview
+# Order Management Application
 
 This project is built as an NX monorepo containing two main applications:
 
 - **Frontend**: Angular application for order creation and viewing
 - **Backend**: NestJS API for order management and persistence
+
+The application allows you to create and view orders with filtering capabilities.
 
 ### Key Features
 
